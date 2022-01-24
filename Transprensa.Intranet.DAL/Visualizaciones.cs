@@ -12,13 +12,12 @@ namespace Transprensa.Intranet.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Notificaciones
+    public partial class Visualizaciones
     {
-        public int idNotificacion { get; set; }
-        public int idConfiguracionNoticia { get; set; }
-        public System.DateTime fecha { get; set; }
-        public string titulo { get; set; }
+        public int idVisualizacion { get; set; }
+        public string idUsuario { get; set; }
+        public int idNoticia { get; set; }
     
-        public virtual ConfiguracionNotificaciones ConfiguracionNotificaciones { get; set; }
+        public virtual Noticias Noticias { get; set; }
     }
 }

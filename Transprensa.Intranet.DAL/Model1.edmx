@@ -99,6 +99,7 @@
           <Property Name="idNotificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idConfiguracionNoticia" Type="int" Nullable="false" />
           <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="titulo" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -117,6 +118,14 @@
           <Property Name="idTipoEvento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="color" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Visualizaciones">
+          <Key>
+            <PropertyRef Name="idVisualizacion" />
+          </Key>
+          <Property Name="idVisualizacion" Type="int" Nullable="false" />
+          <Property Name="idUsuario" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="idNoticia" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Capacitaciones_Areas">
           <End Role="Areas" Type="Self.Areas" Multiplicity="1" />
@@ -178,6 +187,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Visualizaciones_Noticias">
+          <End Role="Noticias" Type="Self.Noticias" Multiplicity="1" />
+          <End Role="Visualizaciones" Type="Self.Visualizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Noticias">
+              <PropertyRef Name="idNoticia" />
+            </Principal>
+            <Dependent Role="Visualizaciones">
+              <PropertyRef Name="idNoticia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="IntranetModelStoreContainer">
           <EntitySet Name="Areas" EntityType="Self.Areas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Capacitaciones" EntityType="Self.Capacitaciones" Schema="dbo" store:Type="Tables" />
@@ -191,6 +212,7 @@
           <EntitySet Name="Notificaciones" EntityType="Self.Notificaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoEvento" EntityType="Self.TipoEvento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visualizaciones" EntityType="Self.Visualizaciones" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Capacitaciones_Areas" Association="Self.FK_Capacitaciones_Areas">
             <End Role="Areas" EntitySet="Areas" />
             <End Role="Capacitaciones" EntitySet="Capacitaciones" />
@@ -210,6 +232,10 @@
           <AssociationSet Name="FK_Notificaciones_ConfiguracionNotificaciones" Association="Self.FK_Notificaciones_ConfiguracionNotificaciones">
             <End Role="ConfiguracionNotificaciones" EntitySet="ConfiguracionNotificaciones" />
             <End Role="Notificaciones" EntitySet="Notificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visualizaciones_Noticias" Association="Self.FK_Visualizaciones_Noticias">
+            <End Role="Noticias" EntitySet="Noticias" />
+            <End Role="Visualizaciones" EntitySet="Visualizaciones" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -248,6 +274,11 @@
           <AssociationSet Name="FK_Notificaciones_ConfiguracionNotificaciones" Association="IntranetModel.FK_Notificaciones_ConfiguracionNotificaciones">
             <End Role="ConfiguracionNotificaciones" EntitySet="ConfiguracionNotificaciones" />
             <End Role="Notificaciones" EntitySet="Notificaciones" />
+          </AssociationSet>
+          <EntitySet Name="Visualizaciones" EntityType="IntranetModel.Visualizaciones" />
+          <AssociationSet Name="FK_Visualizaciones_Noticias" Association="IntranetModel.FK_Visualizaciones_Noticias">
+            <End Role="Noticias" EntitySet="Noticias" />
+            <End Role="Visualizaciones" EntitySet="Visualizaciones" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Capacitaciones">
@@ -352,6 +383,7 @@
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="categoria" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Imagenes" Relationship="IntranetModel.FK_Imagenes_Noticias" FromRole="Noticias" ToRole="Imagenes" />
+          <NavigationProperty Name="Visualizaciones" Relationship="IntranetModel.FK_Visualizaciones_Noticias" FromRole="Noticias" ToRole="Visualizaciones" />
         </EntityType>
         <Association Name="FK_Capacitaciones_Areas">
           <End Type="IntranetModel.Areas" Role="Areas" Multiplicity="1" />
@@ -420,6 +452,7 @@
           <Property Name="idConfiguracionNoticia" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ConfiguracionNotificaciones" Relationship="IntranetModel.FK_Notificaciones_ConfiguracionNotificaciones" FromRole="Notificaciones" ToRole="ConfiguracionNotificaciones" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="titulo" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Notificaciones_ConfiguracionNotificaciones">
           <End Type="IntranetModel.ConfiguracionNotificaciones" Role="ConfiguracionNotificaciones" Multiplicity="1" />
@@ -430,6 +463,27 @@
             </Principal>
             <Dependent Role="Notificaciones">
               <PropertyRef Name="idConfiguracionNoticia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Visualizaciones">
+          <Key>
+            <PropertyRef Name="idVisualizacion" />
+          </Key>
+          <Property Name="idVisualizacion" Type="Int32" Nullable="false" />
+          <Property Name="idUsuario" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="idNoticia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Noticias" Relationship="IntranetModel.FK_Visualizaciones_Noticias" FromRole="Visualizaciones" ToRole="Noticias" />
+        </EntityType>
+        <Association Name="FK_Visualizaciones_Noticias">
+          <End Type="IntranetModel.Noticias" Role="Noticias" Multiplicity="1" />
+          <End Type="IntranetModel.Visualizaciones" Role="Visualizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Noticias">
+              <PropertyRef Name="idNoticia" />
+            </Principal>
+            <Dependent Role="Visualizaciones">
+              <PropertyRef Name="idNoticia" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -558,9 +612,19 @@
           <EntitySetMapping Name="Notificaciones">
             <EntityTypeMapping TypeName="IntranetModel.Notificaciones">
               <MappingFragment StoreEntitySet="Notificaciones">
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="idConfiguracionNoticia" ColumnName="idConfiguracionNoticia" />
                 <ScalarProperty Name="idNotificacion" ColumnName="idNotificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visualizaciones">
+            <EntityTypeMapping TypeName="IntranetModel.Visualizaciones">
+              <MappingFragment StoreEntitySet="Visualizaciones">
+                <ScalarProperty Name="idNoticia" ColumnName="idNoticia" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idVisualizacion" ColumnName="idVisualizacion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

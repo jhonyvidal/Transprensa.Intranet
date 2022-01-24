@@ -22,6 +22,8 @@
         <EntityTypeShape EntityType="IntranetModel.ConfiguracionNotificaciones" Width="1.5" PointX="8.375" PointY="8" />
         <EntityTypeShape EntityType="IntranetModel.Notificaciones" Width="1.5" PointX="10.625" PointY="8.375" />
         <AssociationConnector Association="IntranetModel.FK_Notificaciones_ConfiguracionNotificaciones" />
+        <EntityTypeShape EntityType="IntranetModel.Visualizaciones" Width="1.5" PointX="5.625" PointY="11.25" />
+        <AssociationConnector Association="IntranetModel.FK_Visualizaciones_Noticias" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

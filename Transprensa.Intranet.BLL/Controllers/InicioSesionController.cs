@@ -16,6 +16,7 @@ namespace Transprensa.Intranet.BLL.Controllers
             string NTusername;
             string co;
             string correo;
+            //asdasdasdasdasdasda
 
             try
             {

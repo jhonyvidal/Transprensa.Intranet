@@ -37,5 +37,6 @@ namespace Transprensa.Intranet.DAL
         public virtual DbSet<Imagenes> Imagenes { get; set; }
         public virtual DbSet<ConfiguracionNotificaciones> ConfiguracionNotificaciones { get; set; }
         public virtual DbSet<Notificaciones> Notificaciones { get; set; }
+        public virtual DbSet<Visualizaciones> Visualizaciones { get; set; }
     }
 }

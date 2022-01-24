@@ -18,6 +18,7 @@ namespace Transprensa.Intranet.DAL
         public Noticias()
         {
             this.Imagenes = new HashSet<Imagenes>();
+            this.Visualizaciones = new HashSet<Visualizaciones>();
         }
     
         public int idNoticia { get; set; }
@@ -30,5 +31,7 @@ namespace Transprensa.Intranet.DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Imagenes> Imagenes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Visualizaciones> Visualizaciones { get; set; }
     }
 }
