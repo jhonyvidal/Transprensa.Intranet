@@ -221,6 +221,7 @@
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\CapacitacionController.cs" />
     <Compile Include="Controllers\DocumentoController.cs" />
+    <Compile Include="Controllers\Visualizaciones.cs" />
     <Compile Include="Controllers\NotificacionController.cs" />
     <Compile Include="Controllers\TiposEventosController.cs" />
     <Compile Include="Controllers\NoticiaController.cs" />

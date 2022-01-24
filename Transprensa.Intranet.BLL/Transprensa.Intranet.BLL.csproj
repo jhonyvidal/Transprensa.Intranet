@@ -61,6 +61,7 @@
     <Compile Include="Controllers\ImagenesController.cs" />
     <Compile Include="Controllers\InformacionEmpresaController.cs" />
     <Compile Include="Controllers\InicioSesionController.cs" />
+    <Compile Include="Controllers\VisualizacionesController.cs" />
     <Compile Include="Controllers\NoticiasController.cs" />
     <Compile Include="Controllers\TipoEventoController.cs" />
     <Compile Include="Models\AreasModel.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Controllers\NotificacionesController.cs" />
     <Compile Include="Models\ResponseModel.cs" />
     <Compile Include="Models\TipoEventoModel.cs" />
+    <Compile Include="Models\Visualizaciones.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
