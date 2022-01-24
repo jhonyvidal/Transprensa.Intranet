@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8504fe3f22a74f0da72fa9446b4e3aab" Name="Diagram1">
+        <EntityTypeShape EntityType="IntranetModel.Capacitaciones" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="IntranetModel.Documentos" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="IntranetModel.Eventos" Width="1.5" PointX="8" PointY="0.875" />
+        <EntityTypeShape EntityType="IntranetModel.Herramientas" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="IntranetModel.InformacionEmpresa" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="IntranetModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="IntranetModel.TipoEvento" Width="1.5" PointX="5.75" PointY="1.25" />
+        <AssociationConnector Association="IntranetModel.FK_Eventos_TipoEvento" />
+        <EntityTypeShape EntityType="IntranetModel.Areas" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="IntranetModel.Noticias" Width="1.5" PointX="3.375" PointY="7.75" />
+        <AssociationConnector Association="IntranetModel.FK_Capacitaciones_Areas" />
+        <AssociationConnector Association="IntranetModel.FK_Documentos_Areas" />
+        <EntityTypeShape EntityType="IntranetModel.Imagenes" Width="1.5" PointX="5.625" PointY="8" />
+        <AssociationConnector Association="IntranetModel.FK_Imagenes_Noticias" />
+        <EntityTypeShape EntityType="IntranetModel.ConfiguracionNotificaciones" Width="1.5" PointX="8.375" PointY="8" />
+        <EntityTypeShape EntityType="IntranetModel.Notificaciones" Width="1.5" PointX="10.625" PointY="8.375" />
+        <AssociationConnector Association="IntranetModel.FK_Notificaciones_ConfiguracionNotificaciones" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
