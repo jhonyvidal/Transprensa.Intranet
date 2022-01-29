@@ -19,7 +19,7 @@ namespace Transprensa.Intranet.API.Controllers
 
         //api/Visualizaciones
         [System.Web.Http.HttpGet]
-        public async Task<IEnumerable<VisualizacionesModel>> ListarVisualizaciones()
+        public async Task<IEnumerable<VisualizacionesResponse>> ListarVisualizaciones()
         {
             return await Visualizacion.Listar();
         }

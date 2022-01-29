@@ -21,4 +21,10 @@ namespace Transprensa.Intranet.BLL.Models
         public int idNoticia { get; set; }
 
     }
+    public class VisualizacionesResponse
+    {
+        public int idNoticia { get; set; }
+        public int Vistas { get; set; }
+
+    }
 }

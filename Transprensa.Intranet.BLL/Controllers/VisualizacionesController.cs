@@ -13,16 +13,18 @@ namespace Transprensa.Intranet.BLL.Controllers
         ResponseModel response = new ResponseModel();
         Visualizaciones visualizaciones = new Visualizaciones();
 
-        public async Task<IEnumerable<VisualizacionesModel>> Listar()
+        public async Task<IEnumerable<VisualizacionesResponse>> Listar()
         {        
             
-            var listaVisualizaciones = DbContext.Context.Visualizaciones.ToList();
+            var listaVisualizaciones = DbContext.Context.Visualizaciones
+                .GroupBy(c=>c.idNoticia)
+                .Select(c => new { idNoticia = c.Key, Total = c.Select(v => v.idNoticia).Count() })
+                .ToList();
 
-            return listaVisualizaciones.Select(c => new VisualizacionesModel
+            return listaVisualizaciones.Select(c => new VisualizacionesResponse
             {
-                idVisualizacion = c.idVisualizacion,
                 idNoticia = c.idNoticia,
-                idUsuario = c.idUsuario
+                Vistas = c.Total
 
             });
 
